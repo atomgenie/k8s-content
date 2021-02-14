@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+    name: traefik-dashboard-ingress
+spec:
+    entryPoints: # [1]
+        - websecure
+    routes: # [2]
+        - kind: Rule
+          match: Host(`traefik.k3s.tamtanguy.fr`) # [3]
+          services: # [8]
+              - kind: "TraefikService"
+                name: "api@internal"
+    tls:
+        secretName: k3s-tamtanguy-cert

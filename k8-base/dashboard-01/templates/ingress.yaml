@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+    name: dashboard-ingress
+spec:
+    entryPoints: # [1]
+        - websecure
+    routes: # [2]
+        - kind: Rule
+          match: Host(`dashboard.k3s.tamtanguy.fr`) # [3]
+          services: # [8]
+              - name: kubernetes-dashboard
+                port: 80
+                namespace: kubernetes-dashboard
+    tls:
+        secretName: k3s-tamtanguy-cert

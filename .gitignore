@@ -1,0 +1,8 @@
+charts
+\.terraform
+\.terraform\.tfstate\.lock\.info
+terraform.tfstate
+dev.log
+\.envrc
+terraform.tfstate.backup
+*.tfvars

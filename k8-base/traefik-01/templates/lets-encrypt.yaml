@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+    name: letsencrypt-cert
+spec:
+    acme:
+        email: atomgenie@gmail.com
+        # server: https://acme-staging-v02.api.letsencrypt.org/directory
+        server: https://acme-v02.api.letsencrypt.org/directory
+        privateKeySecretRef:
+            name: issuer-private-key-acme
+        solvers:
+            - dns01:
+                  cloudflare:
+                      email: atomgenie@gmail.com
+                      apiTokenSecretRef:
+                          name: cloudflare-apikey-secret
+                          key: apikey

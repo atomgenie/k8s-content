@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+    name: cluster-certificate
+spec:
+    secretName: k3s-tamtanguy-cert
+    dnsNames:
+        - "*.k3s.tamtanguy.fr"
+    issuerRef:
+        name: letsencrypt-cert
+        kind: ClusterIssuer
