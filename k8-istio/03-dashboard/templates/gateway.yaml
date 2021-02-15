@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: dashboard-gateway
+  name: tls-gateway
 spec:
   selector:
     istio: ingressgateway
@@ -14,7 +14,7 @@ spec:
       mode: SIMPLE
       credentialName: k3s-tamtanguy-cert
     hosts:
-    - dashboard.k3s.tamtanguy.fr
+    - "*.k3s.tamtanguy.fr"
 
 ---
 
@@ -26,7 +26,7 @@ spec:
   hosts:
   - "dashboard.k3s.tamtanguy.fr"
   gateways:
-  - dashboard-gateway
+  - tls-gateway
   http:
   - match:
     - uri:
